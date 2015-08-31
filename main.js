@@ -50,8 +50,9 @@ module.exports = function ( con, options, prefix_metadata ) {
         var org = con[f];
 
         con[f] = function () {
-
-            var prefix = ("[" + dateFormat( pattern ) + "]").stamp + " ";
+            // Modified by SFR
+            var now = new Date();
+            var prefix = ("[" + dateFormat(now, pattern, true) + "]").stamp + " ";
             var args = slice.call( arguments );
 
             // Add label if flag is set
